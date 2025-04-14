@@ -1,7 +1,7 @@
 #ifndef BOXES_H
 #define BOXES_H
 
-#include "header.h"
+#include "../../header.h"
 
 /**
  * @brief stampa il lati del box

@@ -1,5 +1,5 @@
-#include "menu.h"
-#include "text.h"
+#include "menu/libreria/menu.h"
+#include "text/text.h"
 
 /**
  * @brief stampa un menu "a tendina" utilizzabile che permette all'utente di scegliere un valore in una lista

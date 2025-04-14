@@ -1,7 +1,7 @@
 #ifndef TEXT_H
 #define TEXT_H
 
-#include "header.h"
+#include "../header.h"
 
 /**
  * @brief stampa un testo all'interno di una box a carattere scelto con formattazione a scelta

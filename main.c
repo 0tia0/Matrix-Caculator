@@ -1,79 +1,35 @@
 /*
-    Caesar Vault V1.0           
+    Matrix Calculator V1.0           
                                 
     Code wrote by Mattia Marelli
     on 2025 as an homework for school
 */
 
 #include "include/header.h"
-#include "boxes.h"
-#include "menu.h"
-#include "text.h"
-#include "usergui.h"
-#include "cesare.h"
+#include "include/menu/libreria/boxes.h"
+#include "include/menu/libreria/menu.h"
+#include "include/text/text.h"
+#include "include/matrix/matrix.h"
+#include "include/matrix/determinant.h"
 
 int main()
 {
     // Imposta il charset in UTF-8
     SetConsoleOutputCP(CP_UTF8);
 
-    int key = readKey();
+    Matrix m;
+    matrix_inizialization(&m, 2, 2);
 
-    int password[MAX_PASSWORD_LENGTH + 1];
-    int buffer[MAX_PASSWORD_LENGTH + 1];
+    m.matrix[0][0] = 3;
+    m.matrix[0][1] = 5;
+    m.matrix[1][0] = 2;
+    m.matrix[1][1] = 1;
 
-    while(1) {
-        const char *options[] = {
-            "Cifra una password",
-            "Decifra una password",
-        };
-        int lineCount1 = sizeof(options) / sizeof(options[0]);
-        int count = 0;
+    calculate_determinant(&m);
 
-        int selection = newMenu("Cosa desideri fare:", options, lineCount1, &count);
+    printf("%f", m.determinant);
 
-        if(selection == 1 || selection == 2) {
-            readPassword(password);
-        }
-
-        switch (selection)
-        {
-        case 0:
-            clearScreen();
-            exit(0);
-            break;
-        case 1:
-            //cifra
-            cifrarioCesare(password, buffer, 0, key);
-
-            printBoxLines();
-            printText("PASSWORD CIFRATA:", false, CENTER);
-            printBoxLines();
-            printText(buffer, false, CENTER);
-            printBoxLines();
-
-            leaveBlankLine();
-
-            system("pause");
-            break;
-        case 2:
-            //decifra
-            cifrarioCesare(password, buffer, 1, key);
-
-            printBoxLines();
-            printText("PASSWORD DECIFRATA:", false, CENTER);
-            printBoxLines();
-            printText(buffer, false, CENTER);
-            printBoxLines();
-
-            leaveBlankLine();
-
-            system("pause");
-            break;
-        }
-    }
-
-    clearScreen();
+    matrix_destroy(&m);
 
     return 0;
 }

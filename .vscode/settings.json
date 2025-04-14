@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "boxes.h": "c",
+        "text.h": "c",
+        "menu.h": "c",
+        "usergui.h": "c",
+        "determinant.h": "c",
+        "header.h": "c"
+    }
+}

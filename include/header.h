@@ -36,18 +36,13 @@ enum TEXT_FORMAT
 #define ENTER_KEY 13
 #define ESC_KEY 27
 
-// I seguenti valori devono essere pari
-#define MAX_KEY_LENGHT 6
-#define MAX_PASSWORD_LENGTH 30
-
 /*
      Global Variables (declaration only)
 */
 
-extern const char specialChars[];
-extern const char capsChars[];
-extern const char lowerChars[];
-extern const char digits[];
+/*
+     Global Functions (declaration only)
+*/
 
 void moveCursor(int x, int y);
 

@@ -31,8 +31,20 @@ typedef struct {
     General Functions (declaration only)
 */
 
+/**
+ * @brief This function is responsible for initializing the data that make up the Matrix structure
+ * 
+ * @param m matrix struct
+ * @param r count of rows
+ * @param c count of colums
+ */
 void matrix_inizialization(Matrix *m, int r, int c);
 
+/**
+ * @brief This function is responsible for freeing memory from the data that make up the Matrix struct
+ * 
+ * @param m matrix struct
+ */
 void matrix_destroy(Matrix *m);
 
 #endif

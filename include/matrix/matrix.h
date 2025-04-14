@@ -22,7 +22,7 @@ typedef struct {
     bool is_diagonal;
     bool is_upper_triangular;
     bool is_lower_triangular;
-
+    bool null_matrix;
     bool determinant_exis;
     bool is_square;
 } Matrix;
@@ -46,5 +46,19 @@ void matrix_inizialization(Matrix *m, int r, int c);
  * @param m matrix struct
  */
 void matrix_destroy(Matrix *m);
+
+/**
+ * @brief This function checks if the matrix is null rather than not
+ * 
+ * @param m matrix struct
+ */
+void matrix_is_null(Matrix *m);
+
+/**
+ * @brief This function is responsible for the transposing of the matrix
+ * 
+ * @param m matrix struct
+ */
+void transpose_matrix(Matrix *m);
 
 #endif

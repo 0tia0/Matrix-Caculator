@@ -47,6 +47,7 @@ void matrix_inizialization(Matrix *m, int r, int c) {
     m->is_diagonal = false;
     m->is_upper_triangular = false;
     m->is_lower_triangular = false;
+    m->null_matrix = false;
 
     if(m->rows == m->cols) {
         m->is_square = true;
@@ -87,4 +88,37 @@ void matrix_destroy(Matrix *m) {
         free(m->algebrical_complementaries[i]);
     }
     free(m->algebrical_complementaries);
+}
+
+/**
+ * @brief This function checks if the matrix is null rather than not
+ * 
+ * @param m matrix struct
+ */
+void matrix_is_null(Matrix *m) {
+    bool null = true;
+
+    for(int i=0; i<m->rows; i++) {
+        for(int j=0; j<m->cols; j++) {
+            if(m->matrix[i][j] != 0) {
+                null = false;
+                return;
+            }
+        }    
+    }
+
+    m->null_matrix = null;
+}
+
+/**
+ * @brief This function is responsible for the transposing of the matrix
+ * 
+ * @param m matrix struct
+ */
+void transpose_matrix(Matrix *m) {
+    for(int i=0; i<m->rows; i++) {
+        for(int j=0; j<m->cols; j++) {
+            m->transposed_matrix[j][i] = m->matrix[i][j];
+        }    
+    }
 }

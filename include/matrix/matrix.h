@@ -13,7 +13,7 @@ typedef struct {
     float **matrix;
     float **transposed_matrix;
     float **inverted_matrix;
-    float **minimum_complementaries;
+    float **minor_complementaries;
     float **algebrical_complementaries;
 
     int rank;

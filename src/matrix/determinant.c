@@ -54,6 +54,7 @@ float big_matrix_determinant(float **matrix, int rows) {
                 if (j==i) {
                     continue;
                 }
+                
                 subMatrix[l - 1][k] = matrix[l][j];
                 k++;
             }

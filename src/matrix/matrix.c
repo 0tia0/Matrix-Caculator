@@ -31,9 +31,9 @@ void matrix_inizialization(Matrix *m, int r, int c) {
         m->inverted_matrix[i] = malloc(m->cols * sizeof(float));
     }
 
-    m->minimum_complementaries = malloc(m->rows * sizeof(float *));
+    m->minor_complementaries = malloc(m->rows * sizeof(float *));
     for (int i=0; i < m->rows; i++) {
-        m->minimum_complementaries[i] = malloc(m->cols * sizeof(float));
+        m->minor_complementaries[i] = malloc(m->cols * sizeof(float));
     }
 
     m->algebrical_complementaries = malloc(m->rows * sizeof(float *));
@@ -80,9 +80,9 @@ void matrix_destroy(Matrix *m) {
     free(m->inverted_matrix);
 
     for (int i=0; i < m->rows; i++) {
-        free(m->minimum_complementaries[i]);
+        free(m->minor_complementaries[i]);
     }
-    free(m->minimum_complementaries);
+    free(m->minor_complementaries);
 
     for (int i=0; i < m->rows; i++) {
         free(m->algebrical_complementaries[i]);

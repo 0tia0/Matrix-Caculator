@@ -11,9 +11,11 @@
 #include "include/text/text.h"
 #include "include/matrix/matrix.h"
 #include "include/matrix/determinant.h"
+#include "include/matrix/rank.h"
+#include "include/matrix/inverted.h"
 
 void print_matrix(float **matrix, int rows, int cols) {
-    const int cell_width = 8; // spazio per ogni cella (inclusi bordi)
+    const int cell_width = 10; // spazio per ogni cella (inclusi bordi)
     const int precision = 2;  // numero di decimali
 
     // Stampa bordo superiore
@@ -28,7 +30,7 @@ void print_matrix(float **matrix, int rows, int cols) {
     for (int i = 0; i < rows; i++) {
         printf("│");
         for (int j = 0; j < cols; j++) {
-            printf(" %*.2f ", cell_width - 2, matrix[i][j]);  // stampa float allineato
+            printf(" %*.4f ", cell_width - 2, matrix[i][j]);  // stampa float allineato
             printf("│");
         }
         printf("\n");
@@ -59,12 +61,17 @@ int main()
     SetConsoleOutputCP(CP_UTF8);
 
     Matrix m;
-    matrix_inizialization(&m, 2, 2);
+    matrix_inizialization(&m, 3, 3);
 
-    m.matrix[0][0] = 3;
-    m.matrix[0][1] = 1.5;
+    m.matrix[0][0] = 1;
+    m.matrix[0][1] = 3;
+    m.matrix[0][2] = 4;
     m.matrix[1][0] = 2;
-    m.matrix[1][1] = 1;
+    m.matrix[1][1] = 5;
+    m.matrix[1][2] = 1;
+    m.matrix[2][0] = 1;
+    m.matrix[2][1] = 2;
+    m.matrix[2][2] = 3;
 
     calculate_determinant(&m);
 
@@ -73,6 +80,12 @@ int main()
     print_matrix(m.matrix, m.rows, m.cols);
     transpose_matrix(&m);
     print_matrix(m.transposed_matrix, m.cols, m.rows);
+    calculate_minor_complementaries(&m);
+    print_matrix(m.minor_complementaries, m.rows, m.cols);
+    calculate_algebrical_complementaries(&m);
+    print_matrix(m.algebrical_complementaries, m.rows, m.cols);
+    calculate_inverted_matrix(&m);
+    print_matrix(m.inverted_matrix, m.rows, m.cols);
 
     matrix_destroy(&m);
 

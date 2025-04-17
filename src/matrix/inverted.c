@@ -14,12 +14,15 @@ void calculate_minor_complementaries(Matrix *m) {
 
             int k = 0;
             for (int r = 0; r < m->rows; r++) {
-                if (r == i) continue;
+                if (r == i) {
+                    continue;
+                }
 
                 int l = 0;
                 for (int c = 0; c < m->cols; c++) {
-                    if (c == j) continue;
-
+                    if (c == j) {
+                        continue;
+                    }
                     subMatrix[k][l++] = m->matrix[r][c];
                 }
 

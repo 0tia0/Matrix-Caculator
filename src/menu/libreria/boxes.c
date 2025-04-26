@@ -5,25 +5,39 @@
  */
 void printBoxSide()
 {
-    printf("%c", BOX_SIDE);
+    printf("%s", BOX_SIDE);
     for (int i = 0; i < BOX_WIDTH - 2; i++)
     {
         printf(" ");
     }
-    printf("%c", BOX_SIDE);
+    printf("%s", BOX_SIDE);
 }
 
 /**
  * @brief stampa la parte superio del box
  */
-void printBoxLines()
+void printBoxLinesUP()
 {
-    printf("%c", BOX_SIDE);
+    printf("\n%s", BOX_SIDE_LEFT_UP);
     for (int i = 0; i < BOX_WIDTH - 2; i++)
     {
-        printf("%c", BOX_CHAR);
+        printf("%s", BOX_CHAR);
     }
-    printf("%c", BOX_SIDE);
+    printf("%s", BOX_SIDE_RIGHT_UP);
+    printf("\n");
+}
+
+/**
+ * @brief stampa la parte sotto del box
+ */
+void printBoxLinesDOWN()
+{
+    printf("%s", BOX_SIDE_LEFT_DOWN);
+    for (int i = 0; i < BOX_WIDTH - 2; i++)
+    {
+        printf("%s", BOX_CHAR);
+    }
+    printf("%s", BOX_SIDE_RIGHT_DOWN);
     printf("\n");
 }
 
@@ -35,7 +49,7 @@ void printBoxLines()
  */
 void printBox(const char *text[], int lineCount)
 {
-    printBoxLines();
+    printBoxLinesUP();
 
     // stampa le linee centrate
     for (int i = 0; i < lineCount; i++)
@@ -43,5 +57,5 @@ void printBox(const char *text[], int lineCount)
         printText(text[i], false, CENTER);
     }
 
-    printBoxLines();
+    printBoxLinesDOWN();
 }

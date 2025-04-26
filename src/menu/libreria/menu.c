@@ -18,9 +18,12 @@ int newMenu(char *question, const char *text[], int lineCount, int *count)
     while (1)
     {
         clearScreen();
-        printBoxLines();
+        printBoxLinesUP();
         printText(question, false, CENTER);
-        printBoxLines();
+        printBoxLinesDOWN();
+
+        leaveBlankLine();
+        printBoxLinesUP();
 
         for (int i = 0; i < lineCount + 1; i++)
         {
@@ -52,7 +55,7 @@ int newMenu(char *question, const char *text[], int lineCount, int *count)
             }
         }
 
-        printBoxLines();
+        printBoxLinesDOWN();
         
         leaveBlankLine();
         leaveBlankLine();

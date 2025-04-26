@@ -9,9 +9,14 @@
 void printBoxSide();
 
 /**
- * @brief stampa la parte superio del box
+ * @brief stampa la parte superiore del box
  */
-void printBoxLines();
+void printBoxLinesUP();
+
+/**
+ * @brief stampa la parte sotto del box
+ */
+void printBoxLinesDOWN();
  
 /**
  * @brief stampa diverse linee di testo centrate in un box

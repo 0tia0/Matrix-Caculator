@@ -1,6 +1,6 @@
 /*
-    Matrix Calculator V1.0           
-                                
+    Matrix Calculator V1.0
+
     Code wrote by Mattia Marelli
     on 2025 as an homework for school
 */
@@ -14,45 +14,85 @@
 #include "include/matrix/rank.h"
 #include "include/matrix/inverted.h"
 
-void print_matrix(float **matrix, int rows, int cols) {
-    const int cell_width = 10; // spazio per ogni cella (inclusi bordi)
-    const int precision = 2;  // numero di decimali
+void welcome_screen() {
+    const char *ticket[] = {
+        " __  __       _        _         _____      _            _       _             ",
+        "|  \\/  |     | |      (_)       / ____|    | |          | |     | |            ",
+        "| \\  / | __ _| |_ _ __ ___  __ | |     __ _| | ___ _   _| | __ _| |_ ___  _ __ ",
+        "| |\\/| |/ _` | __| '__| \\ \\/ / | |    / _` | |/ __| | | | |/ _` | __/ _ \\| '__|",
+        "| |  | | (_| | |_| |  | |>  <  | |___| (_| | | (__| |_| | | (_| | || (_) | |   ",
+        "|_|  |_|\\__,_|\\__|_|  |_/_/\\_\\  \\_____\\__,_|_|\\___|\\__,_|_|\\__,_|\\__\\___/|_|   ",
+        "",
+        "",
+        "Funzioni disponibili:",
+        "- Operazioni fra matrici",
+        "- Calcolo del Determinante",
+        "- Matrici trasposte e inverse",
+        "- Matrici trangoli e diagonali",
+        "- Minori complementari e algebrici",
+        "",
+        "Limiti:",
+        "- Le operazioni devo rispettare tutte",
+        "  le regole matematiche delle matrici"
+    };
 
-    // Stampa bordo superiore
-    printf("\n\n┌");
-    for (int j = 0; j < cols; j++) {
-        for (int k = 0; k < cell_width; k++) printf("─");
-        if (j < cols - 1) printf("┬");
+    int lineCount0 = sizeof(ticket) / sizeof(ticket[0]);
+    printBox(ticket, lineCount0);
+
+    wait();
+
+    clearScreen();
+}
+
+int get_list_size() {
+    int matrix_count = 30;
+    do {
+    printBoxLinesUP();
+    printText("Con quante matrici si desidera operare (max 26)", false, CENTER);
+    printBoxLinesDOWN();
+
+    printf("\n?:");
+    scanf("%d", &matrix_count);
+    } while (matrix_count > 26);
+
+    if(matrix_count == 0) {
+        printBoxLinesUP();
+        printText("Exiting the program...", false, CENTER);
+        printBoxLinesDOWN();
+        exit(0);
     }
-    printf("┐\n");
 
-    // Stampa righe
-    for (int i = 0; i < rows; i++) {
-        printf("│");
-        for (int j = 0; j < cols; j++) {
-            printf(" %*.4f ", cell_width - 2, matrix[i][j]);  // stampa float allineato
-            printf("│");
-        }
-        printf("\n");
+    return matrix_count;
+}
 
-        // Stampa bordo intermedio (se non è l'ultima riga)
-        if (i < rows - 1) {
-            printf("├");
-            for (int j = 0; j < cols; j++) {
-                for (int k = 0; k < cell_width; k++) printf("─");
-                if (j < cols - 1) printf("┼");
-            }
-            printf("┤\n");
-        }
+void inizialize_matrix(Matrix *list, int size) {
+    for(int i=0; i<size; i++) {
+        char matrix_name;
+
+        char cols[50];
+        char rows[50];
+
+        sprintf(cols, "Inserire il numero di righe della matrice %c", matrix_name);
+        sprintf(rows, "Inserire il numero di colonne della matrice %c", matrix_name);
+
+        printBoxLinesUP();
+        printText(cols, false, CENTER);
+        printBoxLinesDOWN();
+    
+        printf("\n?:");
+        scanf("%d", list[i].rows);
+
+        leaveBlankLine();
+
+        printBoxLinesUP();
+        printText(rows, false, CENTER);
+        printBoxLinesDOWN();
+    
+        printf("\n?:"); 
+        scanf("%d", list[i].cols);
+
+        clearScreen();
     }
-
-    // Stampa bordo inferiore
-    printf("└");
-    for (int j = 0; j < cols; j++) {
-        for (int k = 0; k < cell_width; k++) printf("─");
-        if (j < cols - 1) printf("┴");
-    }
-    printf("┘\n");
 }
 
 int main()
@@ -60,34 +100,12 @@ int main()
     // Imposta il charset in UTF-8
     SetConsoleOutputCP(CP_UTF8);
 
-    Matrix m;
-    matrix_inizialization(&m, 3, 3);
+    welcome_screen();
 
-    m.matrix[0][0] = 1;
-    m.matrix[0][1] = 3;
-    m.matrix[0][2] = 4;
-    m.matrix[1][0] = 2;
-    m.matrix[1][1] = 5;
-    m.matrix[1][2] = 1;
-    m.matrix[2][0] = 1;
-    m.matrix[2][1] = 2;
-    m.matrix[2][2] = 3;
+    int matrix_list_size = get_list_size();
+    Matrix matrix_list[matrix_list_size];
 
-    calculate_determinant(&m);
-
-    printf("%f", m.determinant);
-
-    print_matrix(m.matrix, m.rows, m.cols);
-    transpose_matrix(&m);
-    print_matrix(m.transposed_matrix, m.cols, m.rows);
-    calculate_minor_complementaries(&m);
-    print_matrix(m.minor_complementaries, m.rows, m.cols);
-    calculate_algebrical_complementaries(&m);
-    print_matrix(m.algebrical_complementaries, m.rows, m.cols);
-    calculate_inverted_matrix(&m);
-    print_matrix(m.inverted_matrix, m.rows, m.cols);
-
-    matrix_destroy(&m);
+    
 
     return 0;
 }

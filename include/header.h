@@ -28,9 +28,17 @@ enum TEXT_FORMAT
     Global definitions
 */
 
-#define BOX_CHAR '-'
-#define BOX_SIDE '#'
-#define BOX_WIDTH 70
+#define BOX_CHAR "─"
+
+#define BOX_SIDE "│"
+
+#define BOX_SIDE_LEFT_UP "┌"
+#define BOX_SIDE_RIGHT_UP "┐"
+
+#define BOX_SIDE_LEFT_DOWN "└"
+#define BOX_SIDE_RIGHT_DOWN "┘"
+
+#define BOX_WIDTH 100
 
 #define UP_ARROW 72
 #define DOWN_ARROW 80
@@ -46,5 +54,7 @@ enum TEXT_FORMAT
 */
 
 void moveCursor(int x, int y);
+
+void wait();
 
 #endif

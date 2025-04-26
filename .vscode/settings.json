@@ -5,6 +5,8 @@
         "menu.h": "c",
         "usergui.h": "c",
         "determinant.h": "c",
-        "header.h": "c"
+        "header.h": "c",
+        "operations.h": "c",
+        "matrix.h": "c"
     }
 }

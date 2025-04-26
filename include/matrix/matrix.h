@@ -2,6 +2,7 @@
 #define MATRIX_H
 
 #include "../header.h"
+#include "matrix.h"
 
 /*
     Struct
@@ -48,7 +49,7 @@ void matrix_inizialization(Matrix *m, int r, int c);
 void matrix_destroy(Matrix *m);
 
 /**
- * @brief This function checks if the matrix is null rather than not
+ * @brief This function checks whether the matrix is mull or not.
  * 
  * @param m matrix struct
  */
@@ -60,5 +61,28 @@ void matrix_is_null(Matrix *m);
  * @param m matrix struct
  */
 void transpose_matrix(Matrix *m);
+
+/**
+ * @brief This function checks whether the matrix is ​​diagonal or not.
+ * 
+ * @param m matrix struct
+ */
+void is_diagonal(Matrix *m);
+
+/**
+ * @brief This function checks whether the matrix is upper diagonal or not.
+ * 
+ * @param m matrix struct
+ */
+void is_upper_triangular(Matrix *m);
+
+/**
+ * @brief This function checks whether the matrix is lower diagonal or not.
+ * 
+ * @param m matrix struct
+ */
+void is_lower_triangular(Matrix *m);
+
+void print_matrix(char *name, float **matrix, int rows, int cols);
 
 #endif

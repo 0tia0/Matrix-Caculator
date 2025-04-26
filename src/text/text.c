@@ -19,7 +19,7 @@ void printText(const char *text, bool externalCall, int format)
     }
     else
     {
-        printf("%c", BOX_SIDE);
+        printf("%s", BOX_SIDE);
     }
 
     switch (format)
@@ -77,7 +77,7 @@ void printText(const char *text, bool externalCall, int format)
     }
     else
     {
-        printf("%c\n", BOX_SIDE);
+        printf("%s\n", BOX_SIDE);
     }
 }
 

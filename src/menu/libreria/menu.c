@@ -79,13 +79,13 @@ int newMenu(char *question, const char *text[], int lineCount, int *count)
         {
             if (currentSelection == 0)
             {
-                return 0;
+                exit(0);
             }
             return currentSelection;
         }
         else if (keyPressed == ESC_KEY)
         {
-            return 0;
+            exit(0);
         }
     }
 }

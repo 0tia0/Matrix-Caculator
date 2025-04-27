@@ -1,5 +1,5 @@
-#ifndef RANK_H
-#define RANK_H
+#ifndef OPERATIONS_H
+#define OPERATIONS_H
 
 #include "../header.h"
 #include "matrix.h"

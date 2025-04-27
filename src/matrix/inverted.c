@@ -79,6 +79,9 @@ void calculate_inverted_matrix(Matrix *m) {
         return;
     }
 
+    calculate_minor_complementaries(m);
+    calculate_algebrical_complementaries(m);
+
     for (int i = 0; i < m->rows; i++) {
         for (int j = 0; j < m->cols; j++) {
             // Index are inverted to transpose the algebrical complentaries matrix

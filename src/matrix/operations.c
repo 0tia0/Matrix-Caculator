@@ -57,6 +57,8 @@ Matrix matrix_mul(Matrix *A, Matrix *B) {
             }
         }
     }
+
+    return result;
 }
 
 Matrix matrix_div(Matrix *A, Matrix *B) {
@@ -65,12 +67,9 @@ Matrix matrix_div(Matrix *A, Matrix *B) {
         return null_matrix;
     }
 
-    if(B->is_square == false) {
+    if(!B->is_square) {
         return null_matrix;
     }
-
-    Matrix result;
-    matrix_inizialization(&result, A->rows, B->cols);
 
     calculate_inverted_matrix(B);
 

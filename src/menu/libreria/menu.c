@@ -63,6 +63,7 @@ int newMenu(char *question, const char *text[], int lineCount, int *count)
         printText("USA LE FRECCE PER MUOVERTI E INVIO PER SELEZIONARE", true, CENTER);
 
         keyPressed = _getch();
+        
         if (keyPressed == 224)
         {
             keyPressed = _getch();
